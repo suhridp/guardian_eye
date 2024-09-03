@@ -92,13 +92,6 @@ class HomePage extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: const Icon(Icons.person),
-              title: const Text('Profile'),
-              onTap: () {
-                Navigator.pushNamed(context, '/edit-profile'); // Navigate to Profile
-              },
-            ),
-            ListTile(
               leading: const Icon(Icons.settings),
               title: const Text('Settings'),
               onTap: () {
@@ -134,20 +127,7 @@ class HomePage extends StatelessWidget {
               ),
               child: const Text('Emergency Numbers'),
             ),
-            const SizedBox(height: 20.0),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/edit-profile');
-              },
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                textStyle: const TextStyle(fontSize: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-              ),
-              child: const Text('Edit Profile'),
-            ),
+
             const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
