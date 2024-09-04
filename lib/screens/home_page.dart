@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:guardian_eye/screens/faq_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -183,6 +184,20 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               child: const Text('Community Blog'),
+            ),
+            const SizedBox(height: 20.0),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (contxt)=>const FAQChatbotApp()));
+              },
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                textStyle: const TextStyle(fontSize: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25),
+                ),
+              ),
+              child: const Text('FAQ'),
             ),
             const Spacer(), // Spacer to push the SOS button to the bottom
             ElevatedButton(
