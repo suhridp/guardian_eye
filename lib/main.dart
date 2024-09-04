@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:guardian_eye/screens/change_password_page.dart';
 import 'package:guardian_eye/screens/notification_settings_page.dart';
 import 'package:guardian_eye/screens/terms_and_conditions.dart';
-import 'package:guardian_eye/screens/about_page.dart';
+
 import 'package:guardian_eye/screens/settings_page.dart';
 
 import 'screens/home_page.dart';
