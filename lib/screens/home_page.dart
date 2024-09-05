@@ -118,6 +118,16 @@ class HomePage extends StatelessWidget {
               onTap: () => Navigator.pushNamed(context, '/chatscreen'),
             ),
             ListTile(
+              leading: const Icon(Icons.car_crash),
+              title: const Text('Book a Cab'),
+              onTap: () => Navigator.pushNamed(context, '/book-cab'),
+            ),
+            ListTile(
+              leading: const Icon(Icons.emergency),
+              title: const Text('Emergency helpline'),
+              onTap: () => Navigator.pushNamed(context, '/emergency'),
+            ),
+            ListTile(
               leading: const Icon(Icons.logout),
               title: const Text('Logout'),
               onTap: () => _logout(context),

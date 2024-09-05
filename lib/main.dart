@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:guardian_eye/screens/BookCab.dart';
+import 'package:guardian_eye/screens/Emergency.dart';
 import 'package:guardian_eye/screens/about_us.dart';
 import 'package:guardian_eye/screens/change_password_page.dart';
 import 'package:guardian_eye/screens/chatscreen.dart';
@@ -71,6 +73,8 @@ class GuardianEyeApp extends StatelessWidget {
         '/language-settings': (context) => const LanguageSettings(),
         '/help-support': (context) => const HelpSupport(),
         '/about-us': (context) => const AboutUs(),
+        '/book-cab': (context) => const BookCab(),
+        '/emergency': (context) => const Emergency(),
         '/chatscreen': (context) => const ChatScreen(),
 
         '/new-blog-post': (context) =>
