@@ -65,7 +65,7 @@ class GuardianEyeApp extends StatelessWidget {
         '/settings': (context) => const SettingsPage(),
         '/change-password': (context) => ChangePasswordPage(),
         '/terms-and-conditions': (context) => const TermsAndConditionsPage(),
-        '/about': (context) => const AboutUsPage(),
+
         '/notification-settings': (context) => const NotificationSettingsPage(),
         '/email-notifications': (context) => const EmailNotification(),
         '/privacy-settings': (context) => const PrivacySettings(),
