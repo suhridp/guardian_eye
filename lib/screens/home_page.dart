@@ -128,6 +128,11 @@ class HomePage extends StatelessWidget {
               onTap: () => Navigator.pushNamed(context, '/emergency'),
             ),
             ListTile(
+              leading: const Icon(Icons.article),
+              title: const Text('Articles'),
+              onTap: () => Navigator.pushNamed(context, '/article'),
+            ),
+            ListTile(
               leading: const Icon(Icons.logout),
               title: const Text('Logout'),
               onTap: () => _logout(context),

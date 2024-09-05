@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:guardian_eye/Articles%20-%20SafeCarousel/AllArticles.dart';
 import 'package:guardian_eye/screens/BookCab.dart';
 import 'package:guardian_eye/screens/Emergency.dart';
 import 'package:guardian_eye/screens/about_us.dart';
@@ -76,6 +77,7 @@ class GuardianEyeApp extends StatelessWidget {
         '/book-cab': (context) => const BookCab(),
         '/emergency': (context) => const Emergency(),
         '/chatscreen': (context) => const ChatScreen(),
+        '/article': (context) => const AllArticles(),
 
         '/new-blog-post': (context) =>
             NewBlogPostPage(blogService: blogService),
