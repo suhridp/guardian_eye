@@ -1,51 +1,45 @@
 import 'package:flutter/material.dart';
-
+import 'package:guardian_eye/data/faq_data.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
+
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
 
 class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _controller = TextEditingController();
-  final List<Map<String, String>> _faqData = [
-    {"question": "What is Flutter?", "answer": "Flutter is an open-source UI toolkit created by Google."},
-    {"question": "How do I install Flutter?", "answer": "You can install Flutter from the official website: https://flutter.dev"},
-    // Add more FAQs here
-  ];
   final List<Map<String, String>> _messages = [];
 
-  void _handleSubmitted(String text) {
-    if (text.isEmpty) return;
-    setState(() {
-      _messages.add({"user": text});
-      _controller.clear();
-    });
+  void _handleSubmitted(String query) {
+    // Find FAQ by keywords instead of full question
+    List<String> keywords = query.toLowerCase().split(' '); // Split query into keywords
+    String? response;
 
-    String answer = _findAnswer(text);
-    if (answer.isNotEmpty) {
-      setState(() {
-        _messages.add({"bot": answer});
-      });
-    }
-  }
-
-  String _findAnswer(String question) {
-    for (var faq in _faqData) {
-      if (faq["question"]!.toLowerCase() == question.toLowerCase()) {
-        return faq["answer"]!;
+    for (var faq in faqData) {
+      // Check if any of the keywords match part of the question
+      if (keywords.any((keyword) => faq["question"]!.toLowerCase().contains(keyword))) {
+        response = faq["answer"];
+        break;
       }
     }
-    return "Sorry, I don't understand the question.";
+
+    // If no match is found, provide a default response
+    response ??= "Sorry, I don't have an answer for that. Please try asking differently.";
+
+    setState(() {
+      _messages.add({"user": query});
+      _messages.add({"bot": response!});
+    });
+
+    _controller.clear();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('FAQ Chatbot'),
-      ),
+      appBar: AppBar(title: const Text('Chat')),
       body: Column(
         children: <Widget>[
           Expanded(
