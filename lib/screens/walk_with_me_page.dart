@@ -110,42 +110,73 @@ class _WalkWithMePageState extends State<WalkWithMePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Walk with Me'),
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.deepPurpleAccent,
       ),
-      body: Padding(
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.purple, Colors.deepPurpleAccent],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            TextField(
-              controller: _fromController,
-              decoration: const InputDecoration(
-                labelText: 'From',
-                border: OutlineInputBorder(),
-              ),
-            ),
+            _buildTextField(_fromController, 'From', Icons.location_on),
             const SizedBox(height: 10),
-            TextField(
-              controller: _toController,
-              decoration: const InputDecoration(
-                labelText: 'To',
-                border: OutlineInputBorder(),
-              ),
-            ),
+            _buildTextField(_toController, 'To', Icons.flag),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: _startWalk,
               style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.deepPurpleAccent,
                 padding: const EdgeInsets.symmetric(vertical: 15),
                 textStyle: const TextStyle(fontSize: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25),
                 ),
+                elevation: 5,
               ),
-              child: const Text('Start Walk'),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.directions_walk),
+                  SizedBox(width: 10),
+                  Text('Start Walk'),
+                ],
+              ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildTextField(
+      TextEditingController controller, String label, IconData icon) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+        labelText: label,
+        prefixIcon: Icon(icon, color: Colors.deepPurpleAccent),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25),
+          borderSide: const BorderSide(color: Colors.deepPurpleAccent),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25),
+          borderSide: const BorderSide(color: Colors.deepPurpleAccent),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(25),
+          borderSide:
+              const BorderSide(color: Colors.deepPurpleAccent, width: 2),
+        ),
+        filled: true,
+        fillColor: Colors.white.withOpacity(0.9),
       ),
     );
   }
