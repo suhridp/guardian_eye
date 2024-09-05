@@ -34,41 +34,66 @@ class _BlogPageState extends State<BlogPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Community Blog'),
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.deepPurpleAccent,
       ),
-      body: RefreshIndicator(
-        onRefresh: _refreshPosts, // Define the refresh action
-        child: FutureBuilder<List<BlogPost>>(
-          future: _futurePosts,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                  child: CircularProgressIndicator()); // Loading indicator
-            } else if (snapshot.hasError) {
-              return const Center(
-                  child: Text('Error loading blog posts')); // Error message
-            } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return const Center(
-                  child: Text('No blog posts available')); // No data message
-            }
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.purple, Colors.deepPurpleAccent],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: RefreshIndicator(
+          onRefresh: _refreshPosts, // Define the refresh action
+          color: Colors.white,
+          backgroundColor: Colors.deepPurpleAccent,
+          child: FutureBuilder<List<BlogPost>>(
+            future: _futurePosts,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                  ),
+                ); // Loading indicator
+              } else if (snapshot.hasError) {
+                return const Center(
+                  child: Text(
+                    'Error loading blog posts',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                ); // Error message
+              } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                return const Center(
+                  child: Text(
+                    'No blog posts available',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                ); // No data message
+              }
 
-            final List<BlogPost> posts = snapshot.data!;
+              final List<BlogPost> posts = snapshot.data!;
 
-            return ListView.builder(
-              itemCount: posts.length,
-              itemBuilder: (context, index) {
-                return BlogPostCard(post: posts[index]);
-              },
-            );
-          },
+              return ListView.builder(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                itemCount: posts.length,
+                itemBuilder: (context, index) {
+                  return BlogPostCard(post: posts[index]);
+                },
+              );
+            },
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pushNamed(context, '/new-blog-post');
         },
-        backgroundColor: Colors.purple,
-        child: const Icon(Icons.add),
+        backgroundColor: Colors.white,
+        elevation: 5,
+        child: const Icon(Icons.add, size: 30),
       ),
     );
   }

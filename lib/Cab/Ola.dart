@@ -65,7 +65,7 @@ class OlaCard extends StatelessWidget {
                 width: 50,
                 child: Center(
                   child: Image.asset(
-                    "assets/ola.png",
+                    "assets/icon/ola.jpg",
                     height: 32,
                   ),
                 ),

@@ -65,7 +65,7 @@ class RadpidoCard extends StatelessWidget {
                 width: 50,
                 child: Center(
                   child: Image.asset(
-                    "assets/rapido.png",
+                    "assets/icon/rapido.jpg",
                     height: 32,
                   ),
                 ),
