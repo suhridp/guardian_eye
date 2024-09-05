@@ -8,13 +8,12 @@ import 'package:guardian_eye/screens/chatscreen.dart';
 import 'package:guardian_eye/screens/email_notification.dart';
 import 'package:guardian_eye/screens/help_support.dart';
 import 'package:guardian_eye/screens/language_settings.dart';
-import 'package:guardian_eye/screens/live_safe.dart';
 import 'package:guardian_eye/screens/notification_settings_page.dart';
 import 'package:guardian_eye/screens/privacy_settings.dart';
 import 'package:guardian_eye/screens/security_settings.dart';
 import 'package:guardian_eye/screens/terms_and_conditions.dart';
 import 'package:guardian_eye/screens/settings_page.dart';
-import 'package:guardian_eye/services/auth_wrapper.dart';
+
 import 'screens/home_page.dart';
 import 'screens/login_page.dart';
 import 'screens/emergency_numbers_page.dart'; // Import the emergency numbers page
@@ -49,7 +48,6 @@ class GuardianEyeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'GuardianEye',
-      color: Colors.white,
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
@@ -60,7 +58,6 @@ class GuardianEyeApp extends StatelessWidget {
         '/splash': (context) => const SplashScreen(), // Splash screen route
         '/': (context) => const SplashScreen(),
         '/home': (context) => const HomePage(),
-        '/auth': (context) => const AuthWrapper(),
         '/login': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
         '/blog': (context) => const BlogPage(),
@@ -84,8 +81,6 @@ class GuardianEyeApp extends StatelessWidget {
             NewBlogPostPage(blogService: blogService),
         '/emergency-numbers': (context) =>
             const EmergencyNumbersPage(), // Emergency Numbers route
-        '/live-safety': (context) =>
-            const LiveSafe(), // safe places  route
         '/walk-with-me': (context) =>
             const WalkWithMePage(), // Walk with Me route
         '/check-safety': (context) =>

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RadpidoCard extends StatelessWidget {
-  const RadpidoCard({Key? key}) : super(key: key);
+  const RadpidoCard({super.key});
 
   Future<void> _openRapido() async {
     String packageName = 'com.rapido.passenger';
@@ -60,7 +60,7 @@ class RadpidoCard extends StatelessWidget {
                 // Uncomment the following line if you want to navigate to another page
                 // Navigator.of(context).push(MaterialPageRoute(builder: (context) => Detection()));
               },
-              child: Container(
+              child: SizedBox(
                 height: 50,
                 width: 50,
                 child: Center(
@@ -72,7 +72,7 @@ class RadpidoCard extends StatelessWidget {
               ),
             ),
           ),
-          Text("Rapido")
+          const Text("Rapido")
         ],
       ),
     );

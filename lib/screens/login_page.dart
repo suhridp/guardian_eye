@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:guardian_eye/screens/home_page.dart';
-import 'package:shared_preferences/shared_preferences.dart'; // Add this for local storage
 import 'dart:developer' as devtools show log;
 
 class LoginPage extends StatefulWidget {
@@ -17,27 +16,6 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordController = TextEditingController();
   bool _isLoading = false;
   String? _errorMessage;
-
-  // Check if the user is already logged in
-  @override
-  void initState() {
-    super.initState();
-    _checkLoginStatus();
-  }
-
-  Future<void> _checkLoginStatus() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool? isLoggedIn = prefs.getBool('isLoggedIn');
-
-    if (isLoggedIn == true) {
-      // If the user is already logged in, navigate to the home screen
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const HomePage()),
-      );
-    }
-  }
-
   Future<void> _loginWithEmailAndPassword() async {
     setState(() {
       _isLoading = true;
@@ -50,11 +28,6 @@ class _LoginPageState extends State<LoginPage> {
         password: _passwordController.text.trim(),
       );
       devtools.log('User ${userCredential.user!.uid} logged in');
-
-      // Save the login state in local storage
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.setBool('isLoggedIn', true);
-
       // Navigate to home screen on successful login
       Navigator.pushAndRemoveUntil(
         context,
@@ -75,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
+        resizeToAvoidBottomInset: false, // set it to false
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(16.0),

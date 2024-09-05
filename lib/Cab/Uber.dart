@@ -3,7 +3,7 @@ import 'package:device_apps/device_apps.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class UberCard extends StatelessWidget {
-  const UberCard({Key? key}) : super(key: key);
+  const UberCard({super.key});
 
   Future<void> _openUber() async {
     const String packageName = 'com.ubercab';
@@ -39,7 +39,7 @@ class UberCard extends StatelessWidget {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: InkWell(
               onTap: _openUber,
-              child: Container(
+              child: SizedBox(
                 height: 50,
                 width: 50,
                 child: Center(
@@ -51,7 +51,7 @@ class UberCard extends StatelessWidget {
               ),
             ),
           ),
-          Text("Uber")
+          const Text("Uber")
         ],
       ),
     );

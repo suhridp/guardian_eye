@@ -2,31 +2,10 @@ import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
 import 'package:firebase_auth/firebase_auth.dart';
 
-get profileImageUrl => null;
-
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  void initState() {
-    super.initState();
-    _checkUserLoggedIn();
-  }
-
-  // Check if the user is logged in
-  Future<void> _checkUserLoggedIn() async {
-    User? user = FirebaseAuth.instance.currentUser;
-
-    if (user == null) {
-      // If no user is logged in, navigate to the login page
-      Navigator.pushReplacementNamed(context, '/login');
-    }
-  }
+  get profileImageUrl => null;
 
   // This function sends an SOS alert. Since we cannot use location package,
   // it will simply notify the user or send an alert.
@@ -208,12 +187,6 @@ class _HomePageState extends State<HomePage> {
                       ),
                       _buildFeatureCard(
                         context,
-                        Icons.phone,
-                        'Safe places',
-                        '/live-safety',
-                      ),
-                      _buildFeatureCard(
-                        context,
                         Icons.directions_walk,
                         'Walk With Me',
                         '/walk-with-me',
@@ -239,6 +212,7 @@ class _HomePageState extends State<HomePage> {
                     ],
                   ),
                 ),
+                // const Spacer(),
                 ElevatedButton(
                   onPressed: sendSOS,
                   style: ElevatedButton.styleFrom(
