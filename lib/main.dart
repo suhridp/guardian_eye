@@ -11,7 +11,7 @@ import 'package:guardian_eye/screens/security_settings.dart';
 import 'package:guardian_eye/screens/terms_and_conditions.dart';
 import 'package:guardian_eye/screens/about_page.dart';
 import 'package:guardian_eye/screens/settings_page.dart';
-
+import 'package:guardian_eye/services/auth_wrapper.dart';
 import 'screens/home_page.dart';
 import 'screens/login_page.dart';
 import 'screens/emergency_numbers_page.dart'; // Import the emergency numbers page
@@ -46,6 +46,7 @@ class GuardianEyeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'GuardianEye',
+      color: Colors.white,
       theme: ThemeData(
         primarySwatch: Colors.purple,
       ),
@@ -56,6 +57,7 @@ class GuardianEyeApp extends StatelessWidget {
         '/splash': (context) => const SplashScreen(), // Splash screen route
         '/': (context) => const SplashScreen(),
         '/home': (context) => const HomePage(),
+        '/auth': (context) => const AuthWrapper(),
         '/login': (context) => const LoginPage(),
         '/register': (context) => const RegisterPage(),
         '/blog': (context) => const BlogPage(),
@@ -63,7 +65,7 @@ class GuardianEyeApp extends StatelessWidget {
         '/settings': (context) => const SettingsPage(),
         '/change-password': (context) => ChangePasswordPage(),
         '/terms-and-conditions': (context) => const TermsAndConditionsPage(),
-         '/about': (context) => const AboutUsPage(),
+        '/about': (context) => const AboutUsPage(),
         '/notification-settings': (context) => const NotificationSettingsPage(),
         '/email-notifications': (context) => const EmailNotification(),
         '/privacy-settings': (context) => const PrivacySettings(),

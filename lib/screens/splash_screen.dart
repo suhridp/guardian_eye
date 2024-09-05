@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen>
     // Initialize the animation controller
     _animationController = AnimationController(
       vsync: this,
-      duration:const Duration(seconds: 3), // duration of the animation
+      duration: const Duration(seconds: 3), // duration of the animation
     );
 
     // Define the animation
@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     // Navigate to the next screen after a delay
     Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, '/login');
+      Navigator.pushReplacementNamed(context, '/auth');
     });
   }
 
