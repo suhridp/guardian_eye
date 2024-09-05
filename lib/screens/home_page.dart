@@ -115,7 +115,7 @@ class HomePage extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.help),
               title: const Text('FAQ'),
-              onTap: () => Navigator.pushNamed(context, '/faq'),
+              onTap: () => Navigator.pushNamed(context, '/chatscreen'),
             ),
             ListTile(
               leading: const Icon(Icons.logout),
