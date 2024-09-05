@@ -141,7 +141,7 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: <Widget>[
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
                 // Hero Section with Image
                 Row(
                   children: [
@@ -161,7 +161,7 @@ class HomePage extends StatelessWidget {
                     ), // Add a relevant image
                   ],
                 ),
-                const SizedBox(height: 30.0),
+                const SizedBox(height: 20),
                 // Cards Section
                 Expanded(
                   child: GridView.count(
@@ -207,11 +207,12 @@ class HomePage extends StatelessWidget {
                   onPressed: sendSOS,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
-                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.all(20),
                     textStyle: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.bold),
+                        fontSize: 30, fontWeight: FontWeight.bold),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(25),
+                      borderRadius: BorderRadius.circular(50),
                     ),
                   ),
                   child: const Text('SOS'),
