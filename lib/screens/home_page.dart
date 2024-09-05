@@ -26,42 +26,57 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //  final String? profileImageUrl = null;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('GuardianEye'),
-        backgroundColor: Colors.purple,
-        // actions: [
-        //   IconButton(
-        //     icon: const Icon(Icons.logout),
-        //     onPressed: () => _logout(context),
-        //     tooltip: 'Logout',
-        //   ),
-        // ],
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.deepPurple, Colors.purple],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
+        title: const Text('GuardianEye',
+            style: TextStyle(fontWeight: FontWeight.bold)),
         actions: [
-          Builder(
-            builder: (context) {
-              return IconButton(
-                icon: const Icon(Icons.account_circle),
-                onPressed: () {
-                  Scaffold.of(context)
-                      .openEndDrawer(); // Open the drawer from the right
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: Builder(builder: (context) {
+              return GestureDetector(
+                child: CircleAvatar(
+                  backgroundImage: profileImageUrl != null
+                      ? NetworkImage(profileImageUrl)
+                      : null,
+                  child: profileImageUrl == null
+                      ? Text(
+                          FirebaseAuth.instance.currentUser!.displayName![0],
+                          style: const TextStyle(
+                              fontSize: 24, color: Colors.white),
+                        )
+                      : null,
+                ),
+                onTap: () {
+                  Scaffold.of(context).openEndDrawer();
                 },
-                tooltip: 'Profile',
               );
-            },
+            }),
           ),
         ],
       ),
-      // Adding a Drawer that slides in from the left
-
       endDrawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
               decoration: const BoxDecoration(
-                color: Colors.purple,
+                gradient: LinearGradient(
+                  colors: [Colors.deepPurple, Colors.purple],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,12 +88,11 @@ class HomePage extends StatelessWidget {
                         : null,
                     child: profileImageUrl == null
                         ? Text(
-                            FirebaseAuth.instance.currentUser!.displayName![
-                                0], // Show the first letter of the user's name
+                            FirebaseAuth.instance.currentUser!.displayName![0],
                             style: const TextStyle(
                                 fontSize: 40, color: Colors.white),
                           )
-                        : null, // Show the image if available
+                        : null,
                   ),
                   const SizedBox(height: 5),
                   Text(
@@ -96,9 +110,13 @@ class HomePage extends StatelessWidget {
               leading: const Icon(Icons.settings),
               title: const Text('Settings'),
               onTap: () {
-                Navigator.pushNamed(
-                    context, '/settings'); // Navigate to Settings
+                Navigator.pushNamed(context, '/settings');
               },
+            ),
+            ListTile(
+              leading: const Icon(Icons.help),
+              title: const Text('FAQ'),
+              onTap: () => Navigator.pushNamed(context, '/faq'),
             ),
             ListTile(
               leading: const Icon(Icons.logout),
@@ -108,112 +126,130 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            const SizedBox(height: 20.0),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/emergency-numbers');
-              },
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                textStyle: const TextStyle(fontSize: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
+      body: Stack(
+        children: [
+          // Background Image or Gradient
+          Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.white, Colors.purpleAccent],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
               ),
-              child: const Text('Emergency Numbers'),
             ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: <Widget>[
+                const SizedBox(height: 30),
+                // Hero Section with Image
+                Row(
+                  children: [
+                    const Expanded(
+                      child: Text(
+                        'Welcome back, stay safe!',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.deepPurple,
+                        ),
+                      ),
+                    ),
+                    Image.asset(
+                      'assets/icon/security_icon.png',
+                      width: 80,
+                    ), // Add a relevant image
+                  ],
+                ),
+                const SizedBox(height: 30.0),
+                // Cards Section
+                Expanded(
+                  child: GridView.count(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
+                    children: [
+                      _buildFeatureCard(
+                        context,
+                        Icons.phone,
+                        'Emergency Numbers',
+                        '/emergency-numbers',
+                      ),
+                      _buildFeatureCard(
+                        context,
+                        Icons.directions_walk,
+                        'Walk With Me',
+                        '/walk-with-me',
+                      ),
+                      _buildFeatureCard(
+                        context,
+                        Icons.shield,
+                        'Check Safety',
+                        '/check-safety',
+                      ),
+                      _buildFeatureCard(
+                        context,
+                        Icons.security,
+                        'Safety Techniques',
+                        '/safety-techniques',
+                      ),
+                      _buildFeatureCard(
+                        context,
+                        Icons.forum,
+                        'Community Blog',
+                        '/blog',
+                      ),
+                    ],
+                  ),
+                ),
+                // const Spacer(),
+                ElevatedButton(
+                  onPressed: sendSOS,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    padding: const EdgeInsets.symmetric(vertical: 20),
+                    textStyle: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                  ),
+                  child: const Text('SOS'),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
-            const SizedBox(height: 20.0),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/walk-with-me');
-              },
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                textStyle: const TextStyle(fontSize: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
+  Widget _buildFeatureCard(
+    BuildContext context,
+    IconData icon,
+    String label,
+    String routeName,
+  ) {
+    return GestureDetector(
+      onTap: () => Navigator.pushNamed(context, routeName),
+      child: Card(
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 48, color: Colors.purple),
+            const SizedBox(height: 10),
+            Text(
+              label,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
               ),
-              child: const Text('Walk with me'),
-            ),
-            const SizedBox(height: 20.0),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/check-safety');
-              },
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                textStyle: const TextStyle(fontSize: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-              ),
-              child: const Text('Check Safety'),
-            ),
-            const SizedBox(height: 20.0),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/safety-techniques');
-              },
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                textStyle: const TextStyle(fontSize: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-              ),
-              child: const Text('Safety Techniques'),
-            ),
-            const SizedBox(height: 20.0),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/blog');
-              },
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                textStyle: const TextStyle(fontSize: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-              ),
-              child: const Text('Community Blog'),
-            ),
-            const SizedBox(height: 20.0),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (contxt) => const FAQChatbotApp()));
-              },
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                textStyle: const TextStyle(fontSize: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-              ),
-              child: const Text('FAQ'),
-            ),
-            const Spacer(), // Spacer to push the SOS button to the bottom
-            ElevatedButton(
-              onPressed: sendSOS,
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                textStyle:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25),
-                ),
-              ),
-              child: const Text('SOS'),
             ),
           ],
         ),

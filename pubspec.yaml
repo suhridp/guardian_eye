@@ -42,7 +42,6 @@ dependencies:
   firebase_storage: ^12.2.0
   firebase_app_check: ^0.3.1
 
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -67,6 +66,8 @@ flutter:
 
   assets:
     - assets/icon/app_icon.png
+    - assets/icon/foreground_icon.png
+    - assets/icon//security_icon.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
