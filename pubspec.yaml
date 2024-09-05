@@ -67,7 +67,7 @@ flutter:
   assets:
     - assets/icon/app_icon.png
     - assets/icon/foreground_icon.png
-    - assets/icon//security_icon.png
+    - assets/icon/security_icon.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
