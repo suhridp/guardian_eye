@@ -4,6 +4,7 @@ import 'package:guardian_eye/screens/BookCab.dart';
 import 'package:guardian_eye/screens/Emergency.dart';
 import 'package:guardian_eye/screens/about_us.dart';
 import 'package:guardian_eye/screens/change_password_page.dart';
+import 'package:guardian_eye/screens/chatscreen.dart';
 import 'package:guardian_eye/screens/email_notification.dart';
 import 'package:guardian_eye/screens/help_support.dart';
 import 'package:guardian_eye/screens/language_settings.dart';
@@ -11,7 +12,6 @@ import 'package:guardian_eye/screens/notification_settings_page.dart';
 import 'package:guardian_eye/screens/privacy_settings.dart';
 import 'package:guardian_eye/screens/security_settings.dart';
 import 'package:guardian_eye/screens/terms_and_conditions.dart';
-import 'package:guardian_eye/screens/about_page.dart';
 import 'package:guardian_eye/screens/settings_page.dart';
 
 import 'screens/home_page.dart';
@@ -75,6 +75,7 @@ class GuardianEyeApp extends StatelessWidget {
         '/about-us': (context) => const AboutUs(),
         '/book-cab': (context) => const BookCab(),
         '/emergency': (context) => const Emergency(),
+        '/chatscreen': (context) => const ChatScreen(),
 
         '/new-blog-post': (context) =>
             NewBlogPostPage(blogService: blogService),
