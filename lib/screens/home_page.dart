@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:guardian_eye/screens/faq_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

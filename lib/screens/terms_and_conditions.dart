@@ -10,34 +10,34 @@ class TermsAndConditionsPage extends StatelessWidget {
         title: const Text('Terms and Conditions'),
       ),
       body: ListView(
-        children: [
+        children: const [
           ListTile(
-            title: const Text('User Eligibility'),
-            subtitle: const Text('The app is intended for individuals aged 18 and above. Users must provide accurate personal information during registration.'),
+            title: Text('User Eligibility'),
+            subtitle: Text('The app is intended for individuals aged 18 and above. Users must provide accurate personal information during registration.'),
           ),
           ListTile(
-            title: const Text('Privacy Policy'),
-            subtitle: const Text('User data will be collected and stored securely. Personal information will not be shared with third parties without consent, except as required by law.'),
+            title: Text('Privacy Policy'),
+            subtitle: Text('User data will be collected and stored securely. Personal information will not be shared with third parties without consent, except as required by law.'),
           ),
           ListTile(
-            title: const Text('Emergency Services'),
-            subtitle: const Text('The app provides a feature to contact emergency services. Users must ensure that their location services are enabled for accurate assistance.'),
+            title: Text('Emergency Services'),
+            subtitle: Text('The app provides a feature to contact emergency services. Users must ensure that their location services are enabled for accurate assistance.'),
           ),
           ListTile(
-            title: const Text('User Conduct'),
-            subtitle: const Text('Users are expected to use the app responsibly and not engage in any form of harassment or abuse towards others.'),
+            title: Text('User Conduct'),
+            subtitle: Text('Users are expected to use the app responsibly and not engage in any form of harassment or abuse towards others.'),
           ),
           ListTile(
-            title: const Text('Liability Disclaimer'),
-            subtitle: const Text('The app developers are not liable for any incidents that occur while using the app. Users are encouraged to take personal safety precautions.'),
+            title: Text('Liability Disclaimer'),
+            subtitle: Text('The app developers are not liable for any incidents that occur while using the app. Users are encouraged to take personal safety precautions.'),
           ),
           ListTile(
-            title: const Text('Updates and Modifications'),
-            subtitle: const Text('The terms and conditions may be updated periodically. Users will be notified of significant changes.'),
+            title: Text('Updates and Modifications'),
+            subtitle: Text('The terms and conditions may be updated periodically. Users will be notified of significant changes.'),
           ),
           ListTile(
-            title: const Text('Termination of Service'),
-            subtitle: const Text('The app reserves the right to suspend or terminate accounts that violate these terms.'),
+            title: Text('Termination of Service'),
+            subtitle: Text('The app reserves the right to suspend or terminate accounts that violate these terms.'),
           ),
         ],
       ),
