@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:guardian_eye/screens/BookCab.dart';
+import 'package:guardian_eye/screens/Emergency.dart';
 import 'package:guardian_eye/screens/about_us.dart';
 import 'package:guardian_eye/screens/change_password_page.dart';
 import 'package:guardian_eye/screens/email_notification.dart';
@@ -63,7 +65,7 @@ class GuardianEyeApp extends StatelessWidget {
         '/settings': (context) => const SettingsPage(),
         '/change-password': (context) => ChangePasswordPage(),
         '/terms-and-conditions': (context) => const TermsAndConditionsPage(),
-         '/about': (context) => const AboutUsPage(),
+        '/about': (context) => const AboutUsPage(),
         '/notification-settings': (context) => const NotificationSettingsPage(),
         '/email-notifications': (context) => const EmailNotification(),
         '/privacy-settings': (context) => const PrivacySettings(),
@@ -71,6 +73,8 @@ class GuardianEyeApp extends StatelessWidget {
         '/language-settings': (context) => const LanguageSettings(),
         '/help-support': (context) => const HelpSupport(),
         '/about-us': (context) => const AboutUs(),
+        '/book-cab': (context) => const BookCab(),
+        '/emergency': (context) => const Emergency(),
 
         '/new-blog-post': (context) =>
             NewBlogPostPage(blogService: blogService),
