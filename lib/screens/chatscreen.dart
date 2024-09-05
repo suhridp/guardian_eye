@@ -42,6 +42,23 @@ class _ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(title: const Text('Chat')),
       body: Column(
         children: <Widget>[
+          // Clickable sample question at the top
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
+              onTap: () {
+                _handleSubmitted("What is GuardianEye?");
+              },
+              child: const Text(
+                'Try asking: "What is GuardianEye?"',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.blue, // Make it look clickable
+                ),
+              ),
+            ),
+          ),
           Expanded(
             child: ListView.builder(
               itemCount: _messages.length,
