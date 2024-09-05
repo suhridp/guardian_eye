@@ -118,6 +118,14 @@ class SettingsPage extends StatelessWidget {
                   Navigator.pushNamed(context, '/about-us');
                 },
               ),
+              SettingsTile(
+                icon: Icons.person,
+                title: 'Terms and Condition',
+                subtitle: 'About the terms',
+                onTap: () {
+                  Navigator.pushNamed(context, '/terms-and-conditions');
+                },
+              ),
             ],
           ),
         ],

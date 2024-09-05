@@ -8,6 +8,8 @@ import 'package:guardian_eye/screens/language_settings.dart';
 import 'package:guardian_eye/screens/notification_settings_page.dart';
 import 'package:guardian_eye/screens/privacy_settings.dart';
 import 'package:guardian_eye/screens/security_settings.dart';
+import 'package:guardian_eye/screens/terms_and_conditions.dart';
+import 'package:guardian_eye/screens/about_page.dart';
 import 'package:guardian_eye/screens/settings_page.dart';
 
 import 'screens/home_page.dart';
@@ -60,6 +62,8 @@ class GuardianEyeApp extends StatelessWidget {
         '/edit-profile': (context) => const EditProfilePage(),
         '/settings': (context) => const SettingsPage(),
         '/change-password': (context) => ChangePasswordPage(),
+        '/terms-and-conditions': (context) => const TermsAndConditionsPage(),
+         '/about': (context) => const AboutUsPage(),
         '/notification-settings': (context) => const NotificationSettingsPage(),
         '/email-notifications': (context) => const EmailNotification(),
         '/privacy-settings': (context) => const PrivacySettings(),
