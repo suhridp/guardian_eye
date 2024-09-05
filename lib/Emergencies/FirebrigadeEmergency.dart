@@ -41,11 +41,8 @@ class FireEmergency extends StatelessWidget {
                     backgroundColor: Colors.white24,
                     radius: 25,
                     child: Center(
-                        // child: const ImageAsset(
-                        //   "assets/fire_truck.png",
-                        //   height: 35,
-                        // ),
-                        ),
+                      child: Icon(Icons.fire_truck),
+                    ),
                   ),
                   Expanded(
                     child: Column(

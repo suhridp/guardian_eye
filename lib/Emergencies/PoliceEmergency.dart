@@ -45,7 +45,7 @@ class PoliceEmergency extends StatelessWidget {
                       radius: 25,
                       child: Center(
                           child: Image.asset(
-                        "assets/call_center.png",
+                        "assets/icon/policeman.png",
                         height: 35,
                       ))),
                   Expanded(

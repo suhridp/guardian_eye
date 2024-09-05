@@ -42,7 +42,7 @@ class WomenDistress extends StatelessWidget {
                       radius: 25,
                       child: Center(
                           child: Image.asset(
-                        "assets/medical.png",
+                        "assets/icon/medical.png",
                         height: 35,
                       ))),
                   Expanded(

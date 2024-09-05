@@ -73,6 +73,7 @@ flutter:
     - assets/icon/ola.jpg
     - assets/icon/uber.jpg
     - assets/icon/rapido.jpg
+    - assets/icon/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

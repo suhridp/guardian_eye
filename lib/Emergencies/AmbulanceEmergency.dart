@@ -41,10 +41,7 @@ class AmbulanceEmergency extends StatelessWidget {
                     backgroundColor: Colors.white12,
                     radius: 25,
                     child: Center(
-                        // child: ImageAsset(
-                        //   "assets/active.png",
-                        //   height: 35,
-                        // ),
+                      child: Icon(Icons.local_hospital),
                         ),
                   ),
                   Expanded(
