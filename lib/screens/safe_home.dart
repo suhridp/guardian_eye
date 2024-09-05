@@ -6,7 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:location/location.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:guardian_eye/Dashboard/ContactScreens/phonebook_view.dart';
+//import 'package:guardian_eye/phonebook_view.dart';
 
 class SafeHome extends StatefulWidget {
   const SafeHome({Key? key}) : super(key: key);
@@ -258,12 +258,12 @@ class _SafeHomeState extends State<SafeHome> {
                           return ListTile(
                             onTap: () {
                               Navigator.pop(context);
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => PhoneBook(),
-                                ),
-                              );
+                              //Navigator.push(
+                              // context,
+                              // MaterialPageRoute(
+                              //    builder: (context) => PhoneBook(),
+                              //  ),
+                              //);
                             },
                             title: Text("No contact found!"),
                             subtitle: Text("Please add at least one contact"),

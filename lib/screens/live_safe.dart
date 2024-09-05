@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:guardian_eye/Dashboard/DashWidgets/LiveSafeSpots/BusStationCard.dart';
-import 'package:guardian_eye/Dashboard/DashWidgets/LiveSafeSpots/HospitalCard.dart';
-import 'package:guardian_eye/Dashboard/DashWidgets/LiveSafeSpots/PharmacyCard.dart';
-import 'package:guardian_eye/Dashboard/DashWidgets/LiveSafeSpots/PoliceStationCard.dart';
+import 'package:guardian_eye/LiveSafeSpots/BusStationCard.dart';
+import 'package:guardian_eye/LiveSafeSpots/HospitalCard.dart';
+import 'package:guardian_eye/LiveSafeSpots/PharmacyCard.dart';
+import 'package:guardian_eye/LiveSafeSpots/PoliceStationCard.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class LiveSafe extends StatelessWidget {
-  const LiveSafe({Key ?key}) : super(key: key);
+  const LiveSafe({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,20 +27,28 @@ class LiveSafe extends StatelessWidget {
   }
 
   static Future<void> openMap(String location) async {
-    String googleUrl =
-        'https://www.google.com/maps/search/?api=1&query=$location';
+    // Properly format the URL using Uri class
+    Uri googleUrl =
+        Uri.parse('https://www.google.com/maps/search/?api=1&query=$location');
 
-    try {
-      await launch(googleUrl);
-    } catch (e) {
-      print(e);
+    // Check if the URL can be launched before attempting to launch it
+    if (await canLaunchUrl(googleUrl)) {
+      try {
+        await launchUrl(googleUrl);
+      } catch (e) {
+        // Handle the exception and show a message
+        print(e);
+        Fluttertoast.showToast(
+          msg: "Something went wrong! Call emergency numbers.",
+          toastLength: Toast.LENGTH_LONG,
+        );
+      }
+    } else {
+      // If the URL cannot be launched, throw an error or show a message
       Fluttertoast.showToast(
-          msg: "Something went wrong! Call emergency numbers.");
+        msg: "Could not open the map. Please try again later.",
+        toastLength: Toast.LENGTH_LONG,
+      );
     }
-    // if (await canLaunch(googleUrl)) {
-    //   await launch(googleUrl);
-    // } else {
-    //   throw 'Could not open the map.';
-    // }
   }
 }

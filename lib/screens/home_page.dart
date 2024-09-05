@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
 import 'package:firebase_auth/firebase_auth.dart';
+
 get profileImageUrl => null;
 
 class HomePage extends StatefulWidget {
@@ -135,7 +136,17 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               leading: const Icon(Icons.help),
               title: const Text('FAQ'),
-              onTap: () => Navigator.pushNamed(context, '/faq'),
+              onTap: () => Navigator.pushNamed(context, '/chatscreen'),
+            ),
+            ListTile(
+              leading: const Icon(Icons.car_crash),
+              title: const Text('Book a Cab'),
+              onTap: () => Navigator.pushNamed(context, '/book-cab'),
+            ),
+            ListTile(
+              leading: const Icon(Icons.emergency),
+              title: const Text('Emergency helpline'),
+              onTap: () => Navigator.pushNamed(context, '/emergency'),
             ),
             ListTile(
               leading: const Icon(Icons.logout),
@@ -194,6 +205,12 @@ class _HomePageState extends State<HomePage> {
                         Icons.phone,
                         'Emergency Numbers',
                         '/emergency-numbers',
+                      ),
+                      _buildFeatureCard(
+                        context,
+                        Icons.phone,
+                        'Safe places',
+                        '/live-safety',
                       ),
                       _buildFeatureCard(
                         context,

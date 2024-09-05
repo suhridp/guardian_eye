@@ -41,8 +41,17 @@ dependencies:
   image_picker: ^1.1.2
   firebase_storage: ^12.2.0
   firebase_app_check: ^0.3.1
-  shared_preferences: ^2.3.2
 
+  url_launcher: ^6.3.0
+  device_apps: ^2.2.0
+  android_intent_plus: ^5.1.0
+  flutter_phone_direct_caller: ^2.1.1
+  fluttertoast: ^8.2.8
+  shared_preferences: ^2.3.2
+  location: ^7.0.0
+  lottie: ^3.1.2
+  flutter_spinkit: ^5.2.1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -68,7 +77,7 @@ flutter:
   assets:
     - assets/icon/app_icon.png
     - assets/icon/foreground_icon.png
-    - assets/icon//security_icon.png
+    - assets/icon/security_icon.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
