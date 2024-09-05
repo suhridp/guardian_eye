@@ -112,10 +112,10 @@ class SettingsPage extends StatelessWidget {
               ),
               SettingsTile(
                 icon: Icons.info_outline,
-                title: 'About',
+                title: 'About Us',
                 subtitle: 'Learn more about the app',
                 onTap: () {
-                  Navigator.pushNamed(context, '/about');
+                  Navigator.pushNamed(context, '/about-us');
                 },
               ),
             ],

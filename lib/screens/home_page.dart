@@ -80,7 +80,7 @@ class HomePage extends StatelessWidget {
                           )
                         : null, // Show the image if available
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 5),
                   Text(
                     FirebaseAuth.instance.currentUser?.displayName ?? '',
                     style: const TextStyle(color: Colors.white, fontSize: 20),
@@ -188,7 +188,10 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (contxt)=>const FAQChatbotApp()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (contxt) => const FAQChatbotApp()));
               },
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 15),
